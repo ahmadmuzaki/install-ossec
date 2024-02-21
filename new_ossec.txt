@@ -1,0 +1,35 @@
+#Setup
+
+sudo apt install git -y
+
+git clone https://github.com/ahmadmuzaki/install-ossec.git
+
+cd install-ossec
+
+sudo sh install_ossec.sh
+
+cd ..
+
+git clone https://github.com/ossec/ossec-hids.git ossec
+
+cd ossec/
+
+sudo ./install.sh
+
+sudo /var/ossec/bin/ossec-control start
+
+cd /var/www/html/
+
+sudo git clone https://github.com/ossec/ossec-wui.git ossec
+
+sudo apt install apache2-utils -y
+
+cd ossec/
+
+sudo ./setup.sh
+
+sudo systemctl restart apache2
+
+sudo reboot
+
+sudo /var/ossec/bin/ossec-control restart
